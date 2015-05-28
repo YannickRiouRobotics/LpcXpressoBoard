@@ -1,0 +1,63 @@
+ARCH = arm-none-eabi
+
+# Tool definitions
+CC      = $(ARCH)-gcc
+C++      = $(ARCH)-g++
+LD      = $(ARCH)-ld
+AR      = $(ARCH)-ar
+AS      = $(ARCH)-as
+CP      = $(ARCH)-objcopy
+OD	= $(ARCH)-objdump
+SIZE	= $(ARCH)-size
+RM	= rm
+
+# Flags
+CFLAGS   = -W -Wall -Os  --std=gnu99 -fgnu89-inline -mcpu=cortex-m3 -mthumb
+CFLAGS  += -ffunction-sections -fdata-sections
+ASFLAGS  =
+LDFLAGS  = --gc-sections
+CPFLAGS  =
+ODFLAGS  = -x --syms
+PRFLAGS ?=
+
+
+# Source files
+LINKER_SCRIPT = LPC17xx.ld
+CSRCS  = startup_LPC17xx.c $(wildcard *.c)
+CSRCS += ./source/main.c \
+	 ./source/uart.c
+
+OBJS   = $(CSRCS:.c=.o) $(ASRCS:.s=.o)
+
+#.PHONY: all size clean nuke
+
+all: main.hex 
+
+size: main.elf
+	@$(SIZE) $<
+
+%.hex: %.elf
+	$(CP) $(CPFLAGS) -O ihex $< ./build/$*.hex
+
+main.elf: $(LINKER_SCRIPT) $(OBJS) 
+	$(LD) -Map $(@:.elf=.map) $(LDFLAGS) -T $^ -o $@ 
+	$(OD) $(ODFLAGS) $@ > $(@:.elf=.dump)
+	@$(SIZE) $@
+
+%.o: %.c
+	@$(CC) -MM $< -MF $*.d -MP
+	$(CC) -c $(CFLAGS) $< -o $@
+	
+	
+clean:
+	@-rm -f *.elf *.o
+	@-\
+
+
+#-include $(CSRCS:.c=.d)
+
+
+run : 
+	lpc21isp ./build/main.hex /dev/cu.SLAB_USBtoUART  115200 20000
+BT : 
+	lpc21isp ./build/main.hex /dev/cu.SLAVE-DevB  115200 2000

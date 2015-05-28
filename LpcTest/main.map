@@ -1,0 +1,380 @@
+
+Allocating common symbols
+Common symbol       size              file
+
+monGps              0x34              source/main.o
+chaine              0xc               source/main.o
+c                   0x1               source/main.o
+textbuff            0x5               source/main.o
+
+Discarded input sections
+
+ .text          0x0000000000000000        0x0 startup_LPC17xx.o
+ .data          0x0000000000000000        0x0 startup_LPC17xx.o
+ .bss           0x0000000000000000        0x0 startup_LPC17xx.o
+ .stackarea     0x0000000000000000      0x800 startup_LPC17xx.o
+ .text          0x0000000000000000        0x0 system_LPC17xx.o
+ .data          0x0000000000000000        0x0 system_LPC17xx.o
+ .bss           0x0000000000000000        0x0 system_LPC17xx.o
+ .text          0x0000000000000000        0x0 source/main.o
+ .data          0x0000000000000000        0x0 source/main.o
+ .bss           0x0000000000000000        0x0 source/main.o
+ .text.LedOff   0x0000000000000000       0x10 source/main.o
+ .text.Blink    0x0000000000000000       0x1e source/main.o
+ .text          0x0000000000000000        0x0 source/uart.o
+ .data          0x0000000000000000        0x0 source/uart.o
+ .bss           0x0000000000000000        0x0 source/uart.o
+ .text.UART2_Init
+                0x0000000000000000       0x64 source/uart.o
+ .text.UART2_Sendchar
+                0x0000000000000000       0x18 source/uart.o
+ .text.UART0_Getchar
+                0x0000000000000000       0x14 source/uart.o
+ .text.UART2_Getchar
+                0x0000000000000000       0x14 source/uart.o
+ .text.UART3_Getchar
+                0x0000000000000000       0x14 source/uart.o
+ .text.UART0_Getstring
+                0x0000000000000000       0x2c source/uart.o
+ .text.UART2_Getstring
+                0x0000000000000000       0x2c source/uart.o
+ .text.UART3_Getstring
+                0x0000000000000000       0x2c source/uart.o
+ .text.UART2_PrintString
+                0x0000000000000000       0x1c source/uart.o
+ .text.UART3_PrintString
+                0x0000000000000000       0x1c source/uart.o
+ .text.UART0_PrintNumber
+                0x0000000000000000       0x5c source/uart.o
+ .text.UART1_PrintNumber
+                0x0000000000000000       0x5c source/uart.o
+ .text.UART2_PrintNumber
+                0x0000000000000000       0x5c source/uart.o
+ .text.UART3_PrintNumber
+                0x0000000000000000       0x5c source/uart.o
+ .text          0x0000000000000000        0x0 source/gps.o
+ .data          0x0000000000000000        0x0 source/gps.o
+ .bss           0x0000000000000000        0x0 source/gps.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+IROM             0x0000000000000000 0x0000000000080000 xr
+IRAM0            0x0000000010000000 0x0000000000008000 xrw
+IRAM1            0x000000002007c000 0x0000000000004000 xrw
+IRAM2            0x0000000020080000 0x0000000000004000 xrw
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+
+.text           0x0000000000000000      0x810
+ *(.isr_vector .isr_vector.*)
+ .isr_vector    0x0000000000000000       0xc4 startup_LPC17xx.o
+                0x0000000000000000                g_pfnVectors
+ *(.text .text.*)
+ .text.Default_Handler
+                0x00000000000000c4        0x2 startup_LPC17xx.o
+                0x00000000000000c4                ENET_IRQHandler
+                0x00000000000000c4                DebugMon_Handler
+                0x00000000000000c4                RIT_IRQHandler
+                0x00000000000000c4                I2C0_IRQHandler
+                0x00000000000000c4                SysTick_Handler
+                0x00000000000000c4                PWM1_IRQHandler
+                0x00000000000000c4                PendSV_Handler
+                0x00000000000000c4                I2C1_IRQHandler
+                0x00000000000000c4                EINT2_IRQHandler
+                0x00000000000000c4                UART1_IRQHandler
+                0x00000000000000c4                EINT3_IRQHandler
+                0x00000000000000c4                TIMER3_IRQHandler
+                0x00000000000000c4                UART0_IRQHandler
+                0x00000000000000c4                UsageFault_Handler
+                0x00000000000000c4                PLL0_IRQHandler
+                0x00000000000000c4                CAN_IRQHandler
+                0x00000000000000c4                PLL1_IRQHandler
+                0x00000000000000c4                SSP0_IRQHandler
+                0x00000000000000c4                I2S_IRQHandler
+                0x00000000000000c4                I2C2_IRQHandler
+                0x00000000000000c4                RTC_IRQHandler
+                0x00000000000000c4                TIMER0_IRQHandler
+                0x00000000000000c4                SPI_IRQHandler
+                0x00000000000000c4                EINT1_IRQHandler
+                0x00000000000000c4                TIMER1_IRQHandler
+                0x00000000000000c4                UART2_IRQHandler
+                0x00000000000000c4                Default_Handler
+                0x00000000000000c4                ADC_IRQHandler
+                0x00000000000000c4                SSP1_IRQHandler
+                0x00000000000000c4                USB_IRQHandler
+                0x00000000000000c4                BOD_IRQHandler
+                0x00000000000000c4                MemManage_Handler
+                0x00000000000000c4                WDT_IRQHandler
+                0x00000000000000c4                SVC_Handler
+                0x00000000000000c4                QEI_IRQHandler
+                0x00000000000000c4                EINT0_IRQHandler
+                0x00000000000000c4                DMA_IRQHandler
+                0x00000000000000c4                BusFault_Handler
+                0x00000000000000c4                UART3_IRQHandler
+                0x00000000000000c4                MCPWM_IRQHandler
+                0x00000000000000c4                TIMER2_IRQHandler
+ *fill*         0x00000000000000c6        0x2 
+ .text.Reset_Handler
+                0x00000000000000c8       0x84 startup_LPC17xx.o
+                0x00000000000000c8                Reset_Handler
+ .text.SystemCoreClockUpdate
+                0x000000000000014c       0xa4 system_LPC17xx.o
+                0x000000000000014c                SystemCoreClockUpdate
+ .text.SystemInit
+                0x00000000000001f0       0xdc system_LPC17xx.o
+                0x00000000000001f0                SystemInit
+ .text.CPUInit  0x00000000000002cc      0x15c source/main.o
+                0x00000000000002cc                CPUInit
+ .text.waitMs   0x0000000000000428       0x1c source/main.o
+                0x0000000000000428                waitMs
+ .text.LedOn    0x0000000000000444       0x10 source/main.o
+                0x0000000000000444                LedOn
+ .text.startup.main
+                0x0000000000000454       0xb0 source/main.o
+                0x0000000000000454                main
+ .text.UART0_Init
+                0x0000000000000504       0x64 source/uart.o
+                0x0000000000000504                UART0_Init
+ .text.UART1_Init
+                0x0000000000000568       0x74 source/uart.o
+                0x0000000000000568                UART1_Init
+ .text.UART3_Init
+                0x00000000000005dc       0x64 source/uart.o
+                0x00000000000005dc                UART3_Init
+ .text.UART0_Sendchar
+                0x0000000000000640       0x18 source/uart.o
+                0x0000000000000640                UART0_Sendchar
+ .text.UART1_Sendchar
+                0x0000000000000658       0x18 source/uart.o
+                0x0000000000000658                UART1_Sendchar
+ .text.UART3_Sendchar
+                0x0000000000000670       0x18 source/uart.o
+                0x0000000000000670                UART3_Sendchar
+ .text.UART1_Getchar
+                0x0000000000000688       0x14 source/uart.o
+                0x0000000000000688                UART1_Getchar
+ .text.UART1_Getstring
+                0x000000000000069c       0x2c source/uart.o
+                0x000000000000069c                UART1_Getstring
+ .text.UART0_PrintString
+                0x00000000000006c8       0x14 source/uart.o
+                0x00000000000006c8                UART0_PrintString
+ .text.UART1_PrintString
+                0x00000000000006dc       0x14 source/uart.o
+                0x00000000000006dc                UART1_PrintString
+ .text.DecodeGps
+                0x00000000000006f0       0xa0 source/gps.o
+                0x00000000000006f0                DecodeGps
+ *(.gnu.linkonce.t.*)
+ *(.glue_7)
+ .glue_7        0x0000000000000000        0x0 linker stubs
+ *(.glue_7t)
+ .glue_7t       0x0000000000000000        0x0 linker stubs
+ *(.gcc_except_table)
+ *(.rodata .rodata*)
+ .rodata.str1.1
+                0x0000000000000790       0x7d source/main.o
+ *(.gnu.linkonce.r.*)
+                0x0000000000000810                . = ALIGN (0x4)
+ *fill*         0x000000000000080d        0x3 
+ *(.init)
+                0x0000000000000810                . = ALIGN (0x4)
+                0x0000000000000810                __preinit_array_start = .
+ *(.preinit_array)
+                0x0000000000000810                __preinit_array_end = .
+                0x0000000000000810                . = ALIGN (0x4)
+                0x0000000000000810                __init_array_start = .
+ *(SORT(.init_array.*))
+ *(.init_array)
+                0x0000000000000810                __init_array_end = .
+                0x0000000000000810                . = ALIGN (0x4)
+ *crtbegin.o(.ctors)
+ *(EXCLUDE_FILE(*crtend.o) .ctors)
+ *(SORT(.ctors.*))
+ *crtend.o(.ctors)
+                0x0000000000000810                . = ALIGN (0x4)
+ *(.fini)
+                0x0000000000000810                . = ALIGN (0x4)
+                0x0000000000000810                __fini_array_start = .
+ *(.fini_array)
+ *(SORT(.fini_array.*))
+                0x0000000000000810                __fini_array_end = .
+                0x0000000000000810                . = ALIGN (0x4)
+ *crtbegin.o(.dtors)
+ *(EXCLUDE_FILE(*crtend.o) .dtors)
+ *(SORT(.dtors.*))
+ *crtend.o(.dtors)
+                0x0000000000000810                _etext = .
+                0x0000000000000810                _sifastcode = .
+                0x0000000000000810                __exidx_start = .
+
+.vfp11_veneer   0x0000000000000810        0x0
+ .vfp11_veneer  0x0000000000000000        0x0 linker stubs
+
+.v4_bx          0x0000000000000810        0x0
+ .v4_bx         0x0000000000000000        0x0 linker stubs
+
+.iplt           0x0000000000000810        0x0
+ .iplt          0x0000000000000000        0x0 startup_LPC17xx.o
+
+.rel.dyn        0x0000000000000810        0x0
+ .rel.iplt      0x0000000000000000        0x0 startup_LPC17xx.o
+
+.ARM.exidx
+ *(.ARM.exidx* .gnu.linkonce.armexidx.*)
+                0x0000000000000810                __exidx_end = .
+
+.fastcode       0x0000000010000000        0x0 load address 0x0000000000000810
+                0x0000000010000000                . = ALIGN (0x4)
+                0x0000000010000000                _sfastcode = .
+ *(.glue_7t)
+ *(.glue_7)
+ *(.fastcode)
+                0x0000000010000000                . = ALIGN (0x4)
+                0x0000000010000000                _efastcode = .
+                0x0000000010000000                _sidata = .
+
+.usb_ram
+ *.o(USB_RAM)
+
+.data           0x0000000010000000        0x4 load address 0x0000000000000810
+                0x0000000000000810                _sidata = LOADADDR (.data)
+                0x0000000010000000                . = ALIGN (0x4)
+                0x0000000010000000                _sdata = .
+ *(vtable vtable.*)
+ *(.data .data.*)
+ .data.SystemCoreClock
+                0x0000000010000000        0x4 system_LPC17xx.o
+                0x0000000010000000                SystemCoreClock
+ *(.gnu.linkonce.d*)
+                0x0000000010000004                . = ALIGN (0x4)
+                0x0000000010000004                _edata = .
+
+.igot.plt       0x0000000010000004        0x0 load address 0x0000000000000814
+ .igot.plt      0x0000000000000000        0x0 startup_LPC17xx.o
+
+.bss            0x0000000010000004       0x48 load address 0x0000000000000814
+                0x0000000010000004                . = ALIGN (0x4)
+                0x0000000010000004                _sbss = .
+ *(.bss .bss.*)
+ *(.gnu.linkonce.b*)
+ *(COMMON)
+ COMMON         0x0000000010000004       0x46 source/main.o
+                0x0000000010000004                monGps
+                0x0000000010000038                chaine
+                0x0000000010000044                c
+                0x0000000010000045                textbuff
+                0x000000001000004c                . = ALIGN (0x4)
+ *fill*         0x000000001000004a        0x2 
+                0x000000001000004c                _ebss = .
+
+.stackarea      0x000000001000004c        0x4 load address 0x0000000000000814
+                0x0000000010000050                . = ALIGN (0x8)
+ *fill*         0x000000001000004c        0x4 
+                0x0000000010000050                _sstack = .
+ *(.stackarea .stackarea.*)
+                0x0000000010000050                . = ALIGN (0x8)
+                0x0000000010000050                _estack = .
+                0x0000000010000050                . = ALIGN (0x4)
+                0x0000000010000050                _end = .
+                0x0000000010000050                PROVIDE (end, .)
+                0x0000000010008000                _stack = (ORIGIN (IRAM0) + 0x8000)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges
+ *(.debug_aranges)
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info
+ *(.debug_info .gnu.linkonce.wi.*)
+
+.debug_abbrev
+ *(.debug_abbrev)
+
+.debug_line
+ *(.debug_line)
+
+.debug_frame
+ *(.debug_frame)
+
+.debug_str
+ *(.debug_str)
+
+.debug_loc
+ *(.debug_loc)
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_weaknames
+ *(.debug_weaknames)
+
+.debug_funcnames
+ *(.debug_funcnames)
+
+.debug_typenames
+ *(.debug_typenames)
+
+.debug_varnames
+ *(.debug_varnames)
+LOAD startup_LPC17xx.o
+LOAD system_LPC17xx.o
+LOAD source/main.o
+LOAD source/uart.o
+LOAD source/gps.o
+OUTPUT(main.elf elf32-littlearm)
+
+.comment        0x0000000000000000       0x11
+ .comment       0x0000000000000000       0x11 startup_LPC17xx.o
+                                         0x12 (size before relaxing)
+ .comment       0x0000000000000000       0x12 system_LPC17xx.o
+ .comment       0x0000000000000000       0x12 source/main.o
+ .comment       0x0000000000000000       0x12 source/uart.o
+ .comment       0x0000000000000000       0x12 source/gps.o
+
+.ARM.attributes
+                0x0000000000000000       0x33
+ .ARM.attributes
+                0x0000000000000000       0x33 startup_LPC17xx.o
+ .ARM.attributes
+                0x0000000000000033       0x33 system_LPC17xx.o
+ .ARM.attributes
+                0x0000000000000066       0x33 source/main.o
+ .ARM.attributes
+                0x0000000000000099       0x33 source/uart.o
+ .ARM.attributes
+                0x00000000000000cc       0x33 source/gps.o
