@@ -2,7 +2,7 @@
 
 # Goal of the project 
 
-Use the Lpcxpresso 1769 to read GPs data and send them to an Android tablet via bluetooth. 
+Use the Lpcxpresso 1769 to read GPS data and send them to an Android tablet via bluetooth. 
 The user will be able to view the robot position and also give checkpoint to reach with google maps.
 
 # Progression
